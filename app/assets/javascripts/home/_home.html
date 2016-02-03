@@ -1,0 +1,45 @@
+<div class="page-header">
+    <h1>My Projects</h1>
+</div>
+
+<div ng-repeat="project in projects | orderBy:'-upvotes'">
+      <span style="font-size:20px; margin-left:10px;">
+        {{ project.title }}
+      </span>
+      <span>
+        <a href="#/projects/{{project.id}}">Tasks</a>
+      </span>
+    <button type="button" ng-click="addCurrentProject(project)" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+        Update
+    </button>
+    <button ng-click="deleteProject(project)" class="btn btn-danger">Delete</button>
+    <!-- Button trigger modal -->
+</div>
+
+<form ng-submit="addProject()" style="margin-top:30px;">
+    <h3>Add a new project</h3>
+
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="Title" ng-model="title" required="required"/>
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"> Change project: {{ curProject.title }} </h4>
+            </div>
+            <div class="modal-body">
+                <input type="text" ng-model="newTitle" required="required" class="input-lg"/>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" ng-click="updateProject(curProject)" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>

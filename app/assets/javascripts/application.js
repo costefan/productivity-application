@@ -1,0 +1,9 @@
+//= require jquery
+//= require jquery_ujs
+//= require angular
+//= require angular-ui-router
+//= require angular-rails-templates
+//= require angular-devise
+//= require bootstrap-sprockets
+//= require bootstrap-datepicker
+//= require_tree .

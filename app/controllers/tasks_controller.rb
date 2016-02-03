@@ -12,7 +12,7 @@ class TasksController < ApplicationController
   def date
     project = Project.find(params[:project_id])
     task = project.tasks.find(params[:id])
-    task.update(:deadline => params[:task][:deadline])
+    task.update(:deadline => params[:deadline])
 
     respond_with project, task
   end

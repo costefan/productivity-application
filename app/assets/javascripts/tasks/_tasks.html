@@ -17,13 +17,35 @@
                   <span style="font-size:20px; margin-left:10px;">
                       {{task.body}}
                   </span>
+                <span ng-if="task.deadline">
+                        Deadline: {{task.deadline}}
+                </span>
             <button ng-click="markAsDone(task)" class="btn btn-success">Done</button>
             <!-- Button trigger modal -->
             <button type="button" ng-click="addCurrent(task)" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
                 Update
             </button>
             <button ng-click="deleteTask(task)" class="btn btn-danger">Delete</button>
-
+            <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                Choose deadline
+            </button>
+            <div class="collapse" id="collapseExample">
+                <div class="well">
+                    <form ng-submit="updateDate(task)" style="margin-top:30px;">
+                        <div class="form-group">
+                            <input  type="text" ng-model="taskDeadline" class="form-control datepicker" placeholder="Choose deadline for task"  id="example1" value="dfd">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Choose</button>
+                        <script type="text/javascript">
+                            $(document).ready(function () {
+                                $('input.datepicker').datepicker({
+                                    format: 'yyyy-mm-dd'
+                                });
+                            });
+                        </script>
+                    </form>
+                </div>
+            </div>
         </div>
         <div ng-if="task.done">
             <span class="label label-success">Done</span>
@@ -31,24 +53,6 @@
                       {{task.body}}
             </span>
             <button ng-click="deleteTask(task)" class="btn btn-danger">Delete</button>
-        </div>
-        <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-            Choose deadline
-        </button>
-        <div class="collapse" id="collapseExample">
-            <div class="well">
-                <form ng-submit="updateDate(task)" style="margin-top:30px;">
-                    <div class="form-group">
-                        <input  type="text" ng-model="taskDeadline" class="form-control datepicker" placeholder="Choose deadline for task"  id="example1" value="dfd">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Choose</button>
-                    <script type="text/javascript">
-                        $(document).ready(function () {
-                            $('input.datepicker').datepicker();
-                        });
-                    </script>
-                </form>
-            </div>
         </div>
 </div>
 <form ng-submit="addTask()" style="margin-top:30px;">

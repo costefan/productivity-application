@@ -43,10 +43,10 @@ app.controller('TaskCtrl', [
             $scope.newBody = '';
         };
         $scope.updateDate = function(task){
-            console.log($scope.taskDeadline);
-            if($scope.taskDeadline === '') { return; }
+            var taskDeadline = angular.element('input').scope().taskDeadline;
+            if(taskDeadline === '') { return; }
             projects.updateDate(project, task, {
-                deadline: $scope.taskDeadline
+                deadline: taskDeadline
             }).success(function(task) {
 
             });
